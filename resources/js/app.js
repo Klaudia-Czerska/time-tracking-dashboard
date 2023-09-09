@@ -7,7 +7,7 @@ const cards = document.querySelectorAll('.content');
 const fetchData = async () => {
     const times = document.querySelectorAll('.time');
     try {
-        const response = await fetch('../../data.json');
+        const response = await fetch('https://klaudia-czerska.github.io/time-tracking-dashboard/data.json');
         if (response.ok) {
             const jsonResponse = await response.json();
             await updateData(jsonResponse);
