@@ -1,0 +1,325 @@
+
+:root {
+    --fs-small: calc(0.3vh + 0.75rem);
+    --fs-medium: calc(0.3vh + 1.125rem);
+    --fs-large: calc(0.3vh + 1.5rem);
+    --fs-xlarge: calc(0.3vh + 2.5rem);
+    --fw-light: 300;
+    --fw-medium: 400;
+    --fw-bold: 500;
+    --bg-color: hsl(226, 43%, 10%);
+    --cards-bg-color: hsl(235, 46%, 20%);
+    --not-active-f-color: hsl(235, 45%, 61%);
+    --active-f-color: hsl(236, 100%, 87%);
+    --name-card-bg: hsl(246, 80%, 60%);
+    --work-card-bg: hsl(15, 100%, 70%);
+    --play-card-bg: hsl(195, 74%, 62%);
+    --study-card-bg: hsl(348, 100%, 68%);
+    --exercise-card-bg: hsl(145, 58%, 55%);
+    --social-card-bg: hsl(264, 64%, 52%);
+    --self-care-card-bg: hsl(43, 84%, 65%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100svh;
+}
+
+body {
+    align-items: center;
+    background-color: var(--bg-color);
+    color: white;
+    display: flex;
+    font-family: 'Rubik';
+    height: 100%;
+    justify-content: center;
+    min-height: 500px;
+    position: relative;
+}
+
+.container {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    grid-template: "name work play study" 50%
+                   "time exercise social self" 50% / 25% 25% 25% 25%;
+    height: min(80%, 400px);
+    min-height: 400px;
+    place-content: center;
+    position: relative;
+    width: min(80%, 900px);
+}
+
+.container > * {
+    background-color: var(--cards-bg-color);
+    border-radius: 0.5rem;
+}
+
+.name-card {
+    background-color: var(--name-card-bg);
+    display: flex;
+    flex-direction: column;
+    grid-area: name;
+    height: calc(100% + 2rem);
+    justify-content: space-around;
+    padding: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.name-card img {
+    border: 3px solid white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.name-card p {
+    color: var(--active-f-color);
+    font-size: var(--fs-small);
+}
+
+.name-card h1 {
+    font-size: var(--fs-large);
+    font-weight: var(--fw-light);
+}
+
+.time {
+    align-items: flex-end;
+    display: flex;
+    grid-area: time;
+    padding: 1.2rem;
+}
+
+.time ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+.time input {
+    display: none;
+}
+
+.time input:checked+label {
+    color: white;
+}
+
+.time label {
+    color: var(--not-active-f-color);
+    cursor: pointer;
+    font-size: var(--fs-small);
+    transition: all .2s ease-out;
+}
+
+.time label:hover {
+    color: var(--active-f-color);
+}
+
+.work {
+    background-color: var(--work-card-bg);
+    grid-area: work;
+}
+
+.work::after {
+    background: no-repeat url(../../images/icon-work.svg) center/cover;
+}
+
+.play {
+    background-color: var(--play-card-bg);
+    grid-area: play;
+}
+
+.play::after {
+    background: no-repeat url(../../images/icon-play.svg) center/cover;
+}
+
+.study {
+    background-color: var(--study-card-bg);
+    grid-area: study;
+}
+
+.study::after {
+    background: no-repeat url(../../images/icon-study.svg) center/cover;
+}
+
+.exercise {
+    background-color: var(--exercise-card-bg);
+    grid-area: exercise;
+}
+
+.exercise::after {
+    background: no-repeat url(../../images/icon-exercise.svg) center/cover;
+}
+
+.social {
+    background-color: var(--social-card-bg);
+    grid-area: social;
+}
+
+.social::after {
+    background: no-repeat url(../../images/icon-social.svg) center/cover;
+}
+
+.self-care {
+    background-color: var(--self-care-card-bg);
+    grid-area: self;
+}
+
+.self-care::after {
+    background: no-repeat url(../../images/icon-self-care.svg) center/cover;
+}
+
+.work,
+.play,
+.study,
+.exercise,
+.social,
+.self-care {
+    background-image: linear-gradient(transparent 0 30%, var(--cards-bg-color) 30% 100%);
+    overflow: hidden;
+    z-index: 0;
+}
+
+.work::after,
+.play::after,
+.study::after,
+.exercise::after,
+.social::after,
+.self-care::after {
+    content: '';
+    height: 35px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 55px;
+    z-index: 1;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.card > * {
+    background-color: var(--cards-bg-color);
+    border-radius: 0.5rem;
+    bottom: 0;
+    height: 63%;
+    padding: 1.2rem;
+    position: absolute;
+    width: calc(100% - 2.3rem);
+    z-index: 2;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all .2s ease-out;
+}
+
+.content:hover {
+    background-color: hsl(236, 31%, 41%);
+    cursor: pointer;
+}
+
+.content .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.content .header h2 {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-medium);
+}
+
+.content .header i {
+    color: var(--active-f-color);
+    font-size: var(--fs-medium);
+    transition: all .2s ease-out;
+}
+
+.content .header i:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.current {
+    font-size: var(--fs-xlarge);
+}
+
+.previous {
+    color: var(--active-f-color);
+    font-size: var(--fs-small);
+}
+
+.attribution { 
+    bottom: 5px;
+    font-size: 11px; 
+    position: absolute;
+    text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+        align-items: flex-start;
+        min-height: 1700px;
+    }
+    
+    .container {
+        grid-template: "name" 100px
+                       "time" 120px
+                       "work" auto
+                       "play" auto
+                       "study" auto
+                       "exercise" auto
+                       "social" auto
+                       "self" auto / 90%;
+        height: auto;
+        place-content: center;
+        position: relative;
+        width: max(80%, 900px);
+    }
+
+    .card {
+        height: 200px;
+    }
+
+    .name-card p,
+    .name-card h1 {
+        left: 90px;
+        position: absolute;
+        top: 50%;
+    }
+
+    .name-card p {
+        top: 35%;
+    }
+
+    .time ul {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        width: 100%;
+    }
+
+    .time label {
+        font-size: var(--fs-medium);
+    }
+
+}
